@@ -1,0 +1,7 @@
+<div *ngIf="packService.fullPackHistory">
+  <h2>Hearthstone Pack History</h2>
+  <p *ngFor="let packHistory of packService.fullPackHistory.packHistories | keyvalue">
+<!--    <app-pack-type [packHistory]="packHistory.key"></app-pack-type>-->
+    <app-pack-type [packHistory]="packHistory.value"></app-pack-type>
+  </p>
+</div>

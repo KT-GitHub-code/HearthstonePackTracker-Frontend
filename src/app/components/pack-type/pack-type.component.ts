@@ -17,4 +17,11 @@ export class PackTypeComponent {
   @Input()
   packHistory: PackHistory;
 
+  openLegendaryPack() {
+
+  }
+
+  openNonLegendaryPack() {
+
+  }
 }

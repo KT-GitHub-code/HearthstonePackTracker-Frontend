@@ -39,3 +39,14 @@
   height: auto;
   border-radius: 4px;
 }
+
+.legendary-button,
+.non-legendary-button {
+  color: grey;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  bottom: 16px;
+  margin: 6px;
+}

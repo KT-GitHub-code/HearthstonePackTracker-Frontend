@@ -1,6 +1,8 @@
 import {Component, Input} from '@angular/core';
 import {PackHistory} from "../../models/PackHistory";
 import {JsonPipe, NgOptimizedImage} from "@angular/common";
+import {PackType} from "../../models/PackType";
+import {PackService} from "../../services/pack.service";
 
 @Component({
   selector: 'app-pack-type',
@@ -17,11 +19,22 @@ export class PackTypeComponent {
   @Input()
   packHistory: PackHistory;
 
-  openLegendaryPack() {
+  constructor(
+    private packService: PackService
+  ) { }
 
+
+  openLegendaryPack(packType: PackType) {
+    this.packService.openLegendaryPack(packType)
+      .subscribe((ph: PackHistory) => {
+        this.packHistory = ph;
+      });
   }
 
-  openNonLegendaryPack() {
-
+  openNonLegendaryPack(PackType: PackType) {
+    this.packService.openNonLegendaryPack(PackType)
+      .subscribe((ph: PackHistory) => {
+        this.packHistory = ph;
+      });
   }
 }

@@ -32,4 +32,20 @@ export class InspectorComponent implements OnInit {
 
   }
 
+  splitNameAtUppercase(input: string): string {
+    let result: string   = "";
+
+    for (let i = 0; i < input.length; i++) {
+      const currentChar : string  = input[i];
+
+      if (i > 0 && currentChar === currentChar.toUpperCase()) {
+        result += " " + currentChar;
+      } else {
+        result += currentChar;
+      }
+    }
+
+    return result;
+  }
+
 }

@@ -16,7 +16,7 @@ export enum PackType {
   AshesOfOutland = 'AshesOfOutland',
   ScholomanceAcademy = 'ScholomanceAcademy',
   MadnessAtTheDarkmoonFaire = 'MadnessAtTheDarkmoonFaire',
-  ForgedIntheBarrens = 'ForgedIntheBarrens',
+  ForgedInTheBarrens = 'ForgedInTheBarrens',
   UnitedInStormwind = 'UnitedInStormwind',
   FracturedInAlteracValley = 'FracturedInAlteracValley',
   VoyageToTheSunkenCity = 'VoyageToTheSunkenCity',

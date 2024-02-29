@@ -1,0 +1,14 @@
+<div class="card-container" >
+  <div class="card" *ngIf="packHistory">
+    <h2>{{packHistory.packType}}</h2>
+    <img [src]="'./assets/types/' + packHistory.packType + '.avif'" alt="{{packHistory.packType}}" />
+
+    <p class="count-label">Packs opened in current run:</p>
+    <p class="count">{{packHistory.currentCount}}</p>
+
+    <p class="runs-label">All runs:</p>
+    <p class="runs">{{packHistory.runs | json}}</p>
+
+  </div>
+  <button (click)="goBack()">Go back</button>
+</div>

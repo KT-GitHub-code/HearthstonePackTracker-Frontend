@@ -3,6 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {FullPackHistory} from "../models/FullPackHistory";
 import {Observable, tap} from "rxjs";
 import {PackType} from "../models/PackType";
+import {PackHistory} from "../models/PackHistory";
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +13,8 @@ export class PackService {
   constructor(private http: HttpClient) { }
 
   fullPackHistory: FullPackHistory = null;
+
+  packHistory: PackHistory;
 
 
   getPacks(): Observable<FullPackHistory> {
@@ -37,6 +40,10 @@ export class PackService {
     console.log("opening non legendary pack: " + packType);
     return this.http.post('http://localhost:8080/api/openpackwithoutlegendary/' + packType, null
     )
+  }
+
+  changePackHistory(packHistory: PackHistory) {
+    this.packHistory = packHistory;
   }
 
 }

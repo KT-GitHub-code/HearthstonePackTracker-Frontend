@@ -3,13 +3,15 @@ import {PackHistory} from "../../models/PackHistory";
 import {JsonPipe, NgOptimizedImage} from "@angular/common";
 import {PackType} from "../../models/PackType";
 import {PackService} from "../../services/pack.service";
+import {Router, RouterLink} from "@angular/router";
 
 @Component({
   selector: 'app-pack-type',
   standalone: true,
   imports: [
     JsonPipe,
-    NgOptimizedImage
+    NgOptimizedImage,
+    RouterLink
   ],
   templateUrl: './pack-type.component.html',
   styleUrl: './pack-type.component.css'
@@ -20,7 +22,8 @@ export class PackTypeComponent {
   packHistory: PackHistory;
 
   constructor(
-    private packService: PackService
+    private packService: PackService,
+    private router: Router,
   ) { }
 
 
@@ -37,4 +40,11 @@ export class PackTypeComponent {
         this.packHistory = ph;
       });
   }
+
+  navigateToInspectorPage() {
+    this.packService.changePackHistory(this.packHistory);
+
+    this.router.navigate(['/inspector']);
+  }
+
 }

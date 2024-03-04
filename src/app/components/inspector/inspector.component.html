@@ -4,7 +4,10 @@
 
     <div class="image-container">
       <img [src]="'./assets/types/' + packHistory.packType + '.avif'" alt="{{packHistory.packType}}" />
-      <img [src]="imageSrc" alt="Plotted Image" />
+
+      <img *ngIf="!imageLoaded" [src]="'../../../assets/Hourglass.png'" alt="Hourglass Image" class="placeholder-image" />
+
+      <img *ngIf="imageLoaded" [src]="imageSrc" alt="Plotted Image"/>
     </div>
 
     <p class="count-label">Packs opened in current run:</p>

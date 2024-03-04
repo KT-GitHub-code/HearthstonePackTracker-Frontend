@@ -21,6 +21,8 @@ export class InspectorComponent implements OnInit {
 
   imageSrc: any;
 
+  imageLoaded = false;
+
   constructor(
     private packService: PackService,
     private router: Router,
@@ -61,6 +63,7 @@ export class InspectorComponent implements OnInit {
           this.imageSrc = e.target.result;
         };
         reader.readAsDataURL(imageData);
+        this.imageLoaded = true;
       },
       (error) => {
         console.error('Error fetching image:', error);

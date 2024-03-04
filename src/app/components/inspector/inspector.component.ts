@@ -3,6 +3,7 @@ import {JsonPipe, NgIf} from "@angular/common";
 import {PackHistory} from "../../models/PackHistory";
 import {PackService} from "../../services/pack.service";
 import {Router} from "@angular/router";
+import {PlotService} from "../../services/plot.service";
 
 @Component({
   selector: 'app-inspector',
@@ -18,13 +19,17 @@ export class InspectorComponent implements OnInit {
 
   packHistory: PackHistory;
 
+  imageSrc: any;
+
   constructor(
     private packService: PackService,
-    private router: Router
+    private router: Router,
+    private plotService: PlotService
   ) {}
 
   ngOnInit() {
     this.packHistory = this.packService.packHistory;
+    this.fetchImage();
   }
 
   goBack(){
@@ -46,6 +51,21 @@ export class InspectorComponent implements OnInit {
     }
 
     return result;
+  }
+
+  fetchImage() {
+    this.plotService.getImage(this.packHistory.packType).subscribe(
+      (imageData: Blob) => {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          this.imageSrc = e.target.result;
+        };
+        reader.readAsDataURL(imageData);
+      },
+      (error) => {
+        console.error('Error fetching image:', error);
+      }
+    );
   }
 
 }

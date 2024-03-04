@@ -1,7 +1,11 @@
 <div class="card-container" >
   <div class="card" *ngIf="packHistory">
     <h2>{{splitNameAtUppercase(packHistory.packType)}}</h2>
-    <img [src]="'./assets/types/' + packHistory.packType + '.avif'" alt="{{packHistory.packType}}" />
+
+    <div class="image-container">
+      <img [src]="'./assets/types/' + packHistory.packType + '.avif'" alt="{{packHistory.packType}}" />
+      <img [src]="imageSrc" alt="Plotted Image" />
+    </div>
 
     <p class="count-label">Packs opened in current run:</p>
     <p class="count">{{packHistory.currentCount}}</p>
